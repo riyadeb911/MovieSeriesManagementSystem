@@ -1,25 +1,18 @@
-﻿using Microsoft.Data.SqlClient;
-using MovieSeriesManagementSystem.DataBase;
+﻿using System;
+using System.Windows.Forms;
+using MovieSeriesManagementSystem.Forms;
 
-class Program
+namespace MovieSeriesManagementSystem
 {
-    static void Main()
+    internal static class Program
     {
-        DbConnection db = new DbConnection();
-
-        try
+        [STAThread]
+        static void Main()
         {
-            using (SqlConnection connection = db.GetConnection())
-            {
-                connection.Open();
 
-                Console.WriteLine("Database Connected Successfully!");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Database Connection Failed!");
-            Console.WriteLine(ex.Message);
+            Application.Run(new LoginForm());
+            //Application.Run(new UserDashboard());
+            //Application.Run(new AddMovie());
         }
     }
 }
